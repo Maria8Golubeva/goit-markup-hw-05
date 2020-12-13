@@ -115,8 +115,8 @@ img {
 
 .main-logo {
   display: block;
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 24px;
+  padding-bottom: 25px;
 }
 
 .secondary-logo {
@@ -189,9 +189,15 @@ img {
 .site-nav .link {
   color: var(--title-text-color);
 
+  position: relative;
+
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .auth-nav .link {
@@ -200,6 +206,10 @@ img {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link.current {
@@ -260,10 +270,30 @@ img {
   text-align: center;
 }
 
+.form-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+
+  color: var(--title-text-color);
+
+  margin-top: 2px;
+  margin-bottom: 12px;
+}
+
 /* Text containers*/
 .feature-list .specification {
   font-size: 14px;
   line-height: 1.7;
+}
+
+.label-text {
+  color: var(--primary-white-color);
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .crew-list .position {
@@ -292,6 +322,10 @@ img {
   border: 1px solid transparent;
   border-radius: 4px;
   padding: 10px 32px;
+
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero .button:hover,
@@ -314,6 +348,10 @@ img {
   border: 1px solid transparent;
   border-radius: 4px;
   padding: 6px 22px;
+
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .selector .button:hover,
@@ -328,6 +366,10 @@ img {
 /* Flexbox and containers */
 header {
   border-bottom: 1px solid #ececec;
+}
+
+.container.main-nav {
+  height: 80px;
 }
 
 .container.hero {
@@ -359,8 +401,29 @@ header {
   display: flex;
 }
 
+.example-item {
+  position: relative;
+}
+
 .example-item:not(:last-child) {
   margin-right: 30px;
+}
+
+.label {
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(47, 48, 58, 0.8),
+    rgba(47, 48, 58, 0.8)
+  );
+
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
 }
 
 .section.crew {
@@ -438,6 +501,10 @@ header {
 
 .project-item-link {
   display: block;
+
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-item-link:hover,
@@ -562,6 +629,10 @@ header {
   color: #afb1b8;
   background-color: var(--primary-white-color);
   border-radius: 50%;
+
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .crew-social-links.item:not(:last-child) {
@@ -591,6 +662,10 @@ header {
   color: #afb1b8;
   background-color: var(--primary-white-color);
   border-radius: 4%;
+
+  transition-property: color, border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-list.item:not(:last-child) {
@@ -617,6 +692,10 @@ header {
   color: var(--primary-white-color);
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-link-icon:hover,
@@ -629,3 +708,141 @@ header {
 .footer-social-links.item:not(:last-child) {
   margin-right: 10px;
 }
+
+/* Animations and positioning */
+
+.current::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+}
+
+/* Overlay */
+.project-item-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-item-thumb::before {
+  opacity: 1;
+}
+
+.project-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+
+  transform: translateY(100%);
+  opacity: 0;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-item-link:hover .project-item-overlay {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.overlay-text {
+  font-size: 18px;
+  line-height: 1.6;
+
+  color: var(--primary-white-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Modal window */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 580px;
+  padding: 8px;
+
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.close-icon-position {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.close-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.close-icon-position .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  color: #000;
+  background-color: #fff;
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-icon-position .button:hover,
+.close-icon-position .button:focus,
+.close-icon-position .button:active {
+  color: var(--accent-color);
+}
+
+.form {
+}
+
+/*transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);*/

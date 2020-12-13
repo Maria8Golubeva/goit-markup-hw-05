@@ -59,9 +59,26 @@
             <section class="hero centered">
                 <div class="container hero">
                     <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-                    <button type="button" class="button">Заказать услугу</button>
+                    <button type="button" class="button" data-modal-open>Заказать услугу</button>
                 </div>
             </section>
+
+            <!-- Модальное окно -->
+            <div class="backdrop is-hidden" data-modal>
+                <div class="modal">
+                    <div class="close-icon-position">
+                        <button type="button" class="button" data-modal-close>
+                            <svg class="close-icon">
+                                <use href="./images/svg-sprite.svg#close-x"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="form centered">
+                        <h2 class="form-title">Оставьте свои данные, мы вам перезвоним</h2>
+                        <p>здесь будет форма и кнопка</p>
+                    </div>
+                </div>
+            </div>
 
             <!-- Преимущества -->
             <section class="section features">
@@ -124,12 +141,21 @@
                     <ul class="example-list">
                         <li class="example-item">
                             <img src="./images/img1.jpg" alt="" width="370" />
+                            <div class="label">
+                                <p class="label-text">Десктопные приложения</p>
+                            </div>
                         </li>
                         <li class="example-item">
                             <img src="./images/img2.jpg" alt="" width="370" />
+                            <div class="label">
+                                <p class="label-text">Мобильные приложения</p>
+                            </div>
                         </li>
                         <li class="example-item">
                             <img src="./images/img3.jpg" alt="" width="370" />
+                            <div class="label">
+                                <p class="label-text">Дизайнерские решения</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -457,5 +483,7 @@
             </div>
         </div>
         </footer>
+
+        <script src="./js/modal.js"></script>
     </body>
 </html>
